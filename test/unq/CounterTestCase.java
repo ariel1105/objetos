@@ -47,6 +47,18 @@ public class CounterTestCase {
    		 assertEquals(amount, 1);
     }
     
+    @Test
+    public void testOddNumbers() {
+    	int amount = counter.getOddOcurrences();
+    	assertEquals(amount, 9);
+    }
+    
+    @Test
+    public void testMultiplesOf3() {
+    	int amount = counter.getMultiplesOf(3);
+    	assertEquals(amount, 2);
+    }
+    
  
 }
  

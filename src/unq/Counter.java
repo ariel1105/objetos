@@ -18,4 +18,24 @@ public class Counter {
 		}
 		return ocurrences;
 	}
+
+	public int getOddOcurrences() {
+		int ocurrences= 0;
+		for (int i=0; i < elementos.size(); i++) {
+			if (elementos.get(i)%2!= 0) {
+				ocurrences++;
+			}
+		}
+		return ocurrences;
+	}
+
+	public int getMultiplesOf(int n) {
+		int multiples= 0;
+		for(int i=0; i < elementos.size(); i++) {
+			if (elementos.get(i)%n == 0) {
+				multiples++;
+			}
+		}
+		return multiples;
+	}
 }
