@@ -1,9 +1,10 @@
-package unq;
+package tp3;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 
 class MultioperadorTestCase {
 	private Multioperador multioperador;

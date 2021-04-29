@@ -1,4 +1,4 @@
-package unq;
+package tp3;
 
 public class Point {
 	private int x;
