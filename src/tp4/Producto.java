@@ -12,4 +12,8 @@ public class Producto {
 	public Double getPrecio() {
 		return precio;
 	}
+
+	public void registrarVenta() {
+		stock--;
+	}
 }
