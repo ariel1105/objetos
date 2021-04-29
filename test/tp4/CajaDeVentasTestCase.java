@@ -18,6 +18,7 @@ class CajaDeVentasTestCase {
 		caja = new CajaDeVentas();
 		naranja = new Producto(10d, 2);
 		manzana = new ProductoDeCooperativa(20d, 3);
+		
 	}
 
 	@Test
