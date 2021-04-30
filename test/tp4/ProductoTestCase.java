@@ -9,11 +9,13 @@ class ProductoTestCase {
 	
 	private Producto naranja;
 	private ProductoDeCooperativa manzana;
+	private CajaDeVentas caja;
 
 	@BeforeEach
 	public void setUp() throws Exception {
 		naranja = new Producto(10d , 2);
 		manzana = new  ProductoDeCooperativa(10d, 1);
+		caja = new CajaDeVentas();
 	}
 	
 	@Test
@@ -23,6 +25,13 @@ class ProductoTestCase {
 		assertEquals(10d, amount1);
 		assertEquals(9d, amount2);
 		
+	}
+	
+	@Test 
+	void testBajaDeStock() {
+		caja.registrarProducto(naranja);
+		double amount = naranja.getStock();
+		assertEquals(1, amount);
 	}
 
 }

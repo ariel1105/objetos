@@ -1,6 +1,7 @@
 package tp4;
 
 public class Producto {
+	
 	private Double precio;
 	private int stock;
 	
@@ -14,6 +15,10 @@ public class Producto {
 	}
 
 	public void registrarVenta() {
-		stock--;
+		stock --;
+	}
+
+	public double getStock() {
+		return stock;
 	}
 }
