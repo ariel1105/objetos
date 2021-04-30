@@ -10,7 +10,7 @@ public class Producto implements Facturable {
 		stock = s;
 	}
 
-	public Double getPrecio() {
+	public Double montoAPagar() {
 		return precio;
 	}
 

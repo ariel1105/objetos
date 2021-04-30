@@ -7,7 +7,7 @@ public class ProductoDeCooperativa extends Producto {
 	}
 
 	@Override 
-	public Double getPrecio() {
-		return super.getPrecio()*0.9;
+	public Double montoAPagar() {
+		return super.montoAPagar()*0.9;
 	}
 }

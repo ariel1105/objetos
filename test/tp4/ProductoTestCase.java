@@ -20,8 +20,8 @@ class ProductoTestCase {
 	
 	@Test
 	void testPrecios() {
-		Double amount1 = naranja.getPrecio();
-		Double amount2 = manzana.getPrecio();
+		Double amount1 = naranja.montoAPagar();
+		Double amount2 = manzana.montoAPagar();
 		assertEquals(10d, amount1);
 		assertEquals(9d, amount2);
 		

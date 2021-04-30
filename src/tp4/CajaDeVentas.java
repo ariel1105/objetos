@@ -1,10 +1,8 @@
 package tp4;
 
-import java.util.ArrayList;
 
 public class CajaDeVentas implements Agencia{
 	private Double montoAPagar;
-	private ArrayList <Producto> productos = new ArrayList<Producto>();
 
 	public CajaDeVentas() {
 		this.iniciarVenta();
@@ -19,15 +17,20 @@ public class CajaDeVentas implements Agencia{
 	}
 
 	public void registrarProducto(Producto p) {
-		productos.add(p);
-		montoAPagar = montoAPagar + p.getPrecio();
+		sumarDineroDeVenta(p);
 		p.registrarVenta();
 	}
 
-	public void registrarPago(Factura f) {
-		montoAPagar = montoAPagar + f.montoAPagar();
-		this.notificarAgencia();
+	private void sumarDineroDeVenta(Facturable p) {
+		montoAPagar = montoAPagar + p.montoAPagar();
 	}
+	
+	
+
+	public void registrarPago(Factura f) {
+		montoAPagar = montoAPagar + f.montoAPagar(); // busque refactorear para usar 
+		this.notificarAgencia();					 // dinero de venta pero por el enunciado
+	}												 // caja debe implementar registrarPago(Factura f)
 
 	private void notificarAgencia() {
 		// TODO Auto-generated method stub
