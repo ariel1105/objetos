@@ -1,6 +1,6 @@
 package tp4;
 
-public class Impuesto {
+public class Impuesto implements Factura, Facturable{
 	
 	private Double tasa;
 	
@@ -10,5 +10,11 @@ public class Impuesto {
 
 	public Double montoAPagar() {
 		return tasa;
+	}
+
+	@Override
+	public void facturarseEn(CajaDeVentas c) {
+		c.registrarPago(this);
+		
 	}
 }

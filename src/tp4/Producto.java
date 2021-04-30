@@ -1,6 +1,6 @@
 package tp4;
 
-public class Producto {
+public class Producto implements Facturable {
 	
 	private Double precio;
 	private int stock;
@@ -20,5 +20,10 @@ public class Producto {
 
 	public double getStock() {
 		return stock;
+	}
+
+	@Override
+	public void facturarseEn(CajaDeVentas c) {
+		c.registrarProducto(this);
 	}
 }

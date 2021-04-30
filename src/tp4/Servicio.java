@@ -1,6 +1,6 @@
 package tp4;
 
-public class Servicio {
+public class Servicio implements Factura, Facturable {
 	
 	private Double cantUnidades;
 	private Double costoPorUnidad;
@@ -12,6 +12,11 @@ public class Servicio {
 
 	public Double montoAPagar() {
 		return cantUnidades * costoPorUnidad;
+	}
+
+	@Override
+	public void facturarseEn(CajaDeVentas c) {
+		c.registrarPago(this);
 	}
 
 }

@@ -2,7 +2,7 @@ package tp4;
 
 import java.util.ArrayList;
 
-public class CajaDeVentas {
+public class CajaDeVentas implements Agencia{
 	private Double montoAPagar;
 	private ArrayList <Producto> productos = new ArrayList<Producto>();
 
@@ -22,6 +22,20 @@ public class CajaDeVentas {
 		productos.add(p);
 		montoAPagar = montoAPagar + p.getPrecio();
 		p.registrarVenta();
+	}
+
+	public void registrarPago(Factura f) {
+		montoAPagar = montoAPagar + f.montoAPagar();
+		this.notificarAgencia();
+	}
+
+	private void notificarAgencia() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void registrarFacturable(Facturable f) {
+		f.facturarseEn(this);
 	}
 }
 
