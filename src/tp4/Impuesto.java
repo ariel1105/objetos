@@ -13,7 +13,7 @@ public class Impuesto implements Factura, Facturable{
 	}
 
 	@Override
-	public void facturarseEn(CajaDeVentas c) {
+	public void facturarseEn(MercadoCentral c) {
 		c.registrarPago(this);
 		
 	}

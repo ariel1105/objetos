@@ -1,6 +1,6 @@
 package tp4;
 
 public interface Facturable {
-	public void facturarseEn(CajaDeVentas c);
+	public void facturarseEn(MercadoCentral c);
 	public Double montoAPagar();
 }

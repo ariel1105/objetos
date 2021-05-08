@@ -23,7 +23,7 @@ public class Producto implements Facturable {
 	}
 
 	@Override
-	public void facturarseEn(CajaDeVentas c) {
+	public void facturarseEn(MercadoCentral c) {
 		c.registrarProducto(this);
 	}
 }

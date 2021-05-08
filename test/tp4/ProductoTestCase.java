@@ -9,13 +9,13 @@ class ProductoTestCase {
 	
 	private Producto naranja;
 	private ProductoDeCooperativa manzana;
-	private CajaDeVentas caja;
+	private MercadoCentral caja;
 
 	@BeforeEach
 	public void setUp() throws Exception {
 		naranja = new Producto(10d , 2);
 		manzana = new  ProductoDeCooperativa(10d, 1);
-		caja = new CajaDeVentas();
+		caja = new MercadoCentral();
 	}
 	
 	@Test

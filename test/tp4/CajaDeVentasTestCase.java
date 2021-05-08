@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 class CajaDeVentasTestCase {
 
-	private CajaDeVentas caja;
+	private MercadoCentral caja;
 	private Producto naranja;
 	private ProductoDeCooperativa manzana;
 	private Impuesto impuesto;
@@ -16,7 +16,7 @@ class CajaDeVentasTestCase {
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		caja = new CajaDeVentas();
+		caja = new MercadoCentral();
 		naranja = new Producto(10d, 2);
 		manzana = new ProductoDeCooperativa(20d, 3);
 		impuesto = new Impuesto(30d);
