@@ -18,12 +18,16 @@ public class Producto implements Facturable {
 		stock --;
 	}
 
-	public double getStock() {
+	public int getStock() {
 		return stock;
 	}
 
 	@Override
 	public void facturarseEn(MercadoCentral c) {
 		c.registrarProducto(this);
+	}
+
+	public void subirStock(int i) {
+		stock = stock + i;
 	}
 }

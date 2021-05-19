@@ -9,13 +9,11 @@ class ProductoTestCase {
 	
 	private Producto naranja;
 	private ProductoDeCooperativa manzana;
-	private MercadoCentral caja;
-
+	
 	@BeforeEach
 	public void setUp() throws Exception {
 		naranja = new Producto(10d , 2);
 		manzana = new  ProductoDeCooperativa(10d, 1);
-		caja = new MercadoCentral();
 	}
 	
 	@Test
@@ -29,9 +27,16 @@ class ProductoTestCase {
 	
 	@Test 
 	void testBajaDeStock() {
-		caja.registrarProducto(naranja);
+		naranja.registrarVenta();;
 		double amount = naranja.getStock();
 		assertEquals(1, amount);
+	}
+	
+	@Test 
+	void testSubaDeStock() {
+		naranja.subirStock(3);
+		double amount = naranja.getStock();
+		assertEquals(5, amount);
 	}
 
 }
