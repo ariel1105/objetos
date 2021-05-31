@@ -11,12 +11,12 @@ import org.junit.jupiter.api.Test;
 class PokerStatusTestCase {
 	
 	private PokerStatus pokerStatus; //SUT
- 	private IJugador jugador; // DOC
+	//private IJugador jugador; // DOC
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		pokerStatus = new PokerStatus();
-		jugador = mock(IJugador.class);
+	pokerStatus  = new PokerStatus();
+	//jugador = mock(IJugador.class);
 		
 	}
 	
@@ -59,12 +59,7 @@ class PokerStatusTestCase {
 	
 	@Test
 	void testCantidadDeCartasDeValor() {
-		ArrayList<String> mano = new ArrayList<String>();
-		mano.add("2P");
-		mano.add("3C");
-		mano.add("2T");
-		mano.add("4C");
-		mano.add("QC");
+		String[] mano = new String[]{"QC", "1C", "2C", "KD", "5T"};
 		String valorCarta = "Q";
 		int cantidadCartasDeValor = pokerStatus.cantidadDeCartasDeValor(valorCarta, mano);
 		assertEquals(1, cantidadCartasDeValor);
@@ -72,12 +67,7 @@ class PokerStatusTestCase {
 	
 	@Test
 	void testValorConMasOcurrenciasEnMano() {
-		ArrayList<String> mano = new ArrayList<String>();
-		mano.add("2P");
-		mano.add("3C");
-		mano.add("2T");
-		mano.add("4C");
-		mano.add("QC");
+		String[] mano = new String[]{"2C", "1C", "2T", "KD", "5T"};
 		String valorConMasOcurrencias = pokerStatus.valorConMasOcurrencias(mano);
 		assertEquals("2", valorConMasOcurrencias);
 	}
@@ -85,14 +75,46 @@ class PokerStatusTestCase {
 	
 	@Test
 	void testEsPoker() {
-		when(jugador.carta1()).thenReturn("3P");
+		/*when(jugador.carta1()).thenReturn("3P");
 		when(jugador.carta2()).thenReturn("3D");
 		when(jugador.carta3()).thenReturn("3C");
 		when(jugador.carta4()).thenReturn("3T");
 		when(jugador.carta5()).thenReturn("1C");
+		*/
+		String[] mano = new String[]{"2C", "1C", "2T", "2D", "2P"};
 		
-		assertTrue(pokerStatus.verificar(jugador.carta1(), jugador.carta2(), jugador.carta3(), jugador.carta4(), jugador.carta5()));
+		assertTrue(pokerStatus.esPoker(mano));
 	}
 	
-
+	@Test 
+	void cantidadDeCartasDePalo() {
+		String[] mano = new String[]{"2C", "1C", "2T", "KC", "5T"};
+		int cantidadDeCartasDeCorazones = pokerStatus.cantidadDeCartasDePalo("Corazones", mano);
+		assertEquals(3, cantidadDeCartasDeCorazones);
+	}
+	
+	@Test
+	void testEsColor() {
+		String[] mano = new String[]{"2C", "1C", "3C", "KC", "5C"};
+		assertTrue(pokerStatus.esColor(mano));
+	}
+	
+	@Test
+	void testEsTrio() {
+		String[] mano = new String[]{"2C", "3D", "2T", "KD", "2D"};
+		assertTrue(pokerStatus.esTrio(mano));
+	}
+	
+	@Test
+	void testVerificar() {
+		String poker = pokerStatus.verificar("AC","AT","3C","AD","AP");
+		String trio = pokerStatus.verificar("3C", "QC", "3D", "3T", "KC");
+		String color = pokerStatus.verificar("AT", "KT", "QT", "3T", "4T");
+		String nada = pokerStatus.verificar("3C", "2T", "AC", "7C", "5T");
+		assertEquals("Poker", poker);
+		assertEquals("Trio", trio);
+		assertEquals("Color", color);
+		assertEquals("Nada", nada);
+	}
+	
 }

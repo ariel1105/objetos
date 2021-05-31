@@ -22,37 +22,65 @@ public class PokerStatus {
 		return carta.substring(0, carta.length()-1); 
 	}
 
-	public int cantidadDeCartasDeValor(String valorCarta, ArrayList<String> mano) {
+	public int cantidadDeCartasDeValor(String valorCarta, String[] mano) {
 		int cantidad = 0;
-		for (int i = 0; i < mano.size(); i++) {
-			if (valorCarta.equals(this.valorDeCarta(mano.get(i)))){
+		for (int i = 0; i < mano.length; i++) {
+			if (valorCarta.equals(this.valorDeCarta(mano[i]))){
 				cantidad ++;
 			}
 		}
 		return cantidad;
 	}
 
-	public String valorConMasOcurrencias(ArrayList<String> mano) {
-		String valorActual = mano.get(0);
-		for (int i = 1; i < mano.size(); i++) {
-			if (this.cantidadDeCartasDeValor(this.valorDeCarta(mano.get(i)), mano) > 
+	public String valorConMasOcurrencias(String[] mano) {
+		String valorActual = mano[0];
+		for (int i = 1; i < mano.length; i++) {
+			if (this.cantidadDeCartasDeValor(this.valorDeCarta(mano[i]), mano) > 
 			    this.cantidadDeCartasDeValor(this.valorDeCarta(valorActual), mano)){
-				valorActual = mano.get(i);
+				valorActual = mano[i];
 			}
 		}
 		return this.valorDeCarta(valorActual);
 	}
 
-	public Boolean verificar(String carta1, String carta2, String carta3, String carta4, String carta5) {
-		ArrayList<String> mano = new ArrayList<String>();
-		mano.add(carta1);
-		mano.add(carta2);
-		mano.add(carta3);
-		mano.add(carta4);
-		mano.add(carta5);
+	public Boolean esPoker(String[] mano) {
 		String mejorValor = this.valorConMasOcurrencias(mano);
-		int cantidadDeMejoValor = this.cantidadDeCartasDeValor(mejorValor, mano);
-		return cantidadDeMejoValor == 4;
+		int cantidadDeMejorValor = this.cantidadDeCartasDeValor(mejorValor, mano);
+		return cantidadDeMejorValor == 4;
+	}
+
+	public int cantidadDeCartasDePalo(String palo, String[] mano) {
+		int cantidad = 0 ;
+		for (int i = 0; i < mano.length; i++) {
+			String paloActual = this.paloDeCarta(mano[i]);
+			if (palo.equals(paloActual)) {
+				cantidad++;
+			}
+		}
+		return cantidad;
+	}
+
+	public Boolean esColor(String[] mano) {
+		String carta = mano[0];
+		String palo = this.paloDeCarta(carta);
+		return this.cantidadDeCartasDePalo(palo, mano) == 5;
+	}
+
+	public Boolean esTrio(String[] mano) {
+		String mejorValor = this.valorConMasOcurrencias(mano);
+		int cantidadDeMejorValor = this.cantidadDeCartasDeValor(mejorValor, mano);
+		return cantidadDeMejorValor == 3;
+	}
+
+	public String verificar(String carta1, String carta2, String carta3, String carta4, String carta5) {
+		String[] mano = new String[] {carta1, carta2, carta3, carta4, carta5};
+		if (this.esPoker(mano)) {
+			return "Poker";
+		}
+		if (this.esColor(mano)) {
+			return "Color";
+		}
+		else {return "Trio";}
 	}
 
 }	
