@@ -8,7 +8,7 @@ public class ClienteEMail {
 	 String nombreUsuario;
 	 String passusuario;
 	 ArrayList<Correo> inbox;
-	private ArrayList<Correo> borrados;
+	 private ArrayList<Correo> borrados;
 	
 	public ClienteEMail(ServidorPop servidor, String nombreUsuario, String pass){
 		this.servidor=servidor;

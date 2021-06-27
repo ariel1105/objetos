@@ -16,4 +16,18 @@ public class Cliente {
 	public Float sueldoNetoAnual() {
 		return this.sueldoNetoMensual*12f;
 	}
+	
+	public int getEdad() {
+		return this.edad;
+	}
+
+	public void solicitarCredito(Banco banco, SolicitudCredito solicitud) {
+		banco.registrarSolicitud(solicitud);
+	}
+
+	public float getSueldoNetoMensual() {
+		return this.sueldoNetoMensual;
+	}
+
+	
 }
