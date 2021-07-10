@@ -9,20 +9,22 @@ import org.hamcrest.core.IsEqual;
 
 public class ObserverEncuentrosDeportivos implements Observer {
 	
-	private AppEncuentrosDeportivos app;
+	private AplicacionMovil app;
 	private List<String>temasDeInteres;
 	
-	public ObserverEncuentrosDeportivos(AppEncuentrosDeportivos app) {
+	public ObserverEncuentrosDeportivos(AplicacionMovil app, AppEncuentrosDeportivos obs) {
 		this.app = app;
+		obs.addObserver(this);
 	}
 	@Override
 	public void update(Observable o, Object arg) {
-		if(this.esDeInteres((Partido) arg)) {
-			this.notificar(app);
+		Partido partido = (Partido) arg;
+		if(this.esDeInteres(partido)) {
+			this.notificar(this.app, partido);
 		}
 	}
 	
-	public void notificar(AppEncuentrosDeportivos app2) {
+	public void notificar(AplicacionMovil app2, Partido partido) {
 		// TODO Auto-generated method stub
 		
 	}

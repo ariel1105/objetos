@@ -38,7 +38,8 @@ public class ShapeComposite implements IShapeShifter{
 	@Override
 	public IShapeShifter flat() {
 		ShapeComposite composite = new ShapeComposite();
-		Stream<IShapeShifter> stream = this.componentes.stream().map(s -> s.flat());
+		Stream<IShapeShifter> stream = this.componentes.stream();
+		stream.forEach(s -> composite.addChild(s.flat()));
 		return composite;
 	}
 

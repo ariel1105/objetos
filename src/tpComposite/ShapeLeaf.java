@@ -1,5 +1,6 @@
 package tpComposite;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,5 +37,14 @@ public class ShapeLeaf implements IShapeShifter{
 		return valores;
 	}
 	
+	int perteneceARango(LocalDate inicio, LocalDate fin, LocalDate arg) {
+		int resultado = 0;
+		for(LocalDate i = inicio; i != fin; i.plusDays(1)) {
+			if(i.equals(arg)) {
+				resultado = 1;
+			}
+		}
+		return resultado;
+	}
 
 }
